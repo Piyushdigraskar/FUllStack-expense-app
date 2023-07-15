@@ -14,18 +14,36 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const expenseRoutes = require('./routes/expense');
+const purchaseRoutes = require('./routes/purchase')
+const userRoutes = require('./routes/user');
+const premiumFeatureRoutes = require('./routes/premiumFeature')
 
-const signupRoutes = require('./routes/signup');
+const Users = require('./models/user');
+const Expense = require('./models/expense');
+const Order = require('./models/orders');
+
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/expense',expenseRoutes);
+const dotenv = require('dotenv');
 
-app.use('/signup', signupRoutes)
+dotenv.config();
+
+app.use('/user', userRoutes)
+app.use('/purchase', purchaseRoutes)
+app.use('/premium', premiumFeatureRoutes)
+
 
 app.use(errorController.get404);
+
+Users.hasMany(Expense);
+Expense.belongsTo(Users);
+
+Users.hasMany(Order);
+Order.belongsTo(Users);
 
 sequelize
   .sync()
