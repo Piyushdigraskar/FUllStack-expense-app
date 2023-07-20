@@ -1,7 +1,6 @@
 const Expense = require('../models/expense');
 const User = require('../models/user');
 const sequalize = require('../util/database');
-
 const UserServices = require('../services/userservices');
 const S3Service = require('../services/S3services')
 
@@ -55,18 +54,42 @@ const downloadexpense = async (req, res) => {
     console.log(err);
   }
 }
+const ITEM_PER_PAGE = 3;
+const getexpenses = async (req, res) => {
 
+  let totalItems;
 
-const getexpenses = (req, res) => {
+  try {
+    
+    const page = parseInt(req.query.page) || 1;
+    Expense.count()
+      .then((total) => {
+        totalItems = total;
+        return Expense.findAll({ where: { userId: req.user.id }, 
+          offset: (page - 1) * ITEM_PER_PAGE,
+          limit: ITEM_PER_PAGE
+        } );
+        //return Expense.findAll({where: {userId: req.user.id}})
+      }).then((expenses) => {
+        res.json({
+          expenses: expenses,
+          currentPage: page,
+          hasNextPage: ITEM_PER_PAGE * page < totalItems,
+          nextPage: page + 1,
+          hasPreviousPage: page > 1,
+          previousPage: page - 1,
+          lastPage: Math.ceil(totalItems / ITEM_PER_PAGE)
+        })
+        console.log(res.json);
+      })
 
-  Expense.findAll({ where: { userId: req.user.id } }).then(expenses => {
-    return res.status(200).json({ expenses, success: true })
-  })
-    .catch(err => {
-      console.log(err)
-      return res.status(500).json({ error: err, success: false })
-    })
-}
+    //return res.status(200).json({ expenses, success: true });
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: err, success: false });
+  }
+};
+
 
 // const deleteexpense = (req, res) => {
 //     const expenseid = req.params.expenseid;
