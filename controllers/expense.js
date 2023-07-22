@@ -69,7 +69,6 @@ const getexpenses = async (req, res) => {
           offset: (page - 1) * ITEM_PER_PAGE,
           limit: ITEM_PER_PAGE
         } );
-        //return Expense.findAll({where: {userId: req.user.id}})
       }).then((expenses) => {
         res.json({
           expenses: expenses,

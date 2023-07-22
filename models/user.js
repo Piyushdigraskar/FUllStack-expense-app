@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 const sequelize = require('../util/database');
 
-const Signup = sequelize.define('signup',{
+const Users = sequelize.define('user',{
     id:{
         type:Sequelize.INTEGER,
         autoIncrement:true,
@@ -22,8 +22,13 @@ const Signup = sequelize.define('signup',{
         type:Sequelize.STRING,
         allowNull:false
         
+    },
+    ispremiumuser: Sequelize.BOOLEAN,
+    totalExpenses:{
+        type:Sequelize.INTEGER,
+        defaultValue: 0
     }
 
 })
 
-module.exports = Signup;
+module.exports = Users;
