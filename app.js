@@ -16,7 +16,7 @@ const sequelize = require('./util/database');
 var cors = require('cors')
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 const app = express();
-app.use(cors());
+app.use(cors()); 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
  
