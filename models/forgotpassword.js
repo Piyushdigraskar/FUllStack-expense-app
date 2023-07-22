@@ -12,4 +12,4 @@ const Forgotpassword = sequalize.define('forgotpassword', {
     expiresby: Sequelize.DATE
 })
 
-module.exports = Forgotpassword;
+module.exports = Forgotpassword; 

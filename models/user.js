@@ -19,7 +19,7 @@ const Users = sequelize.define('user',{
         unique:true
     },
     password: {
-        type:Sequelize.STRING,
+        type:Sequelize.STRING, 
         allowNull:false
         
     },

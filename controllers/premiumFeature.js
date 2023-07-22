@@ -8,7 +8,7 @@ const getUserLeaderBoard = async (req, res) => {
         const leaderboardofusers = await User.findAll({
             attributes: ['id', 'name',[sequelize.fn('sum', sequelize.col('expenses.selling')), 'totalExpenses'] ],
             include: [
-                {
+                { 
                     model: Expense,
                     attributes: []
                 }

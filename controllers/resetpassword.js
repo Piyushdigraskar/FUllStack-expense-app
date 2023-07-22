@@ -111,7 +111,7 @@ const updatepassword = (req, res) => {
             User.findOne({ where: { id: resetpasswordrequest.userId } }).then(user => {
                 // console.log('userDetails', user)
                 if (user) {
-                    //encrypt the password
+                    //encrypt the password 
 
                     const saltRounds = 10;
                     bcrypt.genSalt(saltRounds, function (err, salt) {

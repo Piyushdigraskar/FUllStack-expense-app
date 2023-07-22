@@ -12,5 +12,5 @@ const Order = sequelize.define('order', {
     orderid: Sequelize.STRING,
     status: Sequelize.STRING
 })
-
+ 
 module.exports = Order;

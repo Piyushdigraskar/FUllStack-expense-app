@@ -19,8 +19,9 @@ const app = express();
 app.use(cors());
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-app.use(helmet());
+ 
 app.use(compression());
+app.use(helmet());
 app.use(morgan('combined', { stream: accessLogStream }));
 
 const expenseRoutes = require('./routes/expense');

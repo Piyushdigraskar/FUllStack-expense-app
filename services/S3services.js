@@ -13,7 +13,7 @@ const uploadToS3 = (data, filename) => {
     var params = {
       Bucket: BUCKET_NAME,
       Key: filename,
-      Body: data,
+      Body: data, 
       ACL: 'public-read'
     }
   

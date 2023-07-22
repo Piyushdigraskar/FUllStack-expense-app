@@ -111,7 +111,7 @@ const getexpenses = async (req, res) => {
 const deleteexpense = async (req, res) => {
   const t = await sequalize.transaction();
   try {
-    const expenseid = req.params.expenseid;
+    const expenseid = req.params.expenseid; 
 
     if (expenseid == undefined || expenseid.length === 0) {
       return res.status(400).json({ success: false });
