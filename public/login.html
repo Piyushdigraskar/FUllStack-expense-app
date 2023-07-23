@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1><b>Login page</b></h1>
+    <br>
+    <form onsubmit="saveToLocal(event)">
+        <label for="email">Enter your Email:</label>
+        <br>
+        <input type="email" name="email" required>
+        <br>
+        <label>Password:</label>
+        <br>
+        <input type="password" name="password" required>
+        <br>
+
+        <button>Login</button>
+    </form>
+    <button onclick="forgotpassword()"> Forgot password</button>
+    <a href="./signup.html">Signup Now</a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+
+    <script src="./login.js"></script>
+
+</body>
+
+</html>

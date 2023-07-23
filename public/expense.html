@@ -1,0 +1,47 @@
+<!-- BOOKING APPOINTMENT APP-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1><b>Expense Page</b></h1>
+    <br>
+    <form onsubmit="saveToLocal(event)">
+        <label>Selling price:</label>
+        <input type="number" name="selling" required>
+        <label>Product name:</label>
+        <input type="text" name="name" required>
+        <label>Choose A Category:</label>
+        <select type="text" name="Category">
+            <option value="Food">Food </option>
+            <option value="Skincare">Skincare </option>
+            <option value="Electronics">Electronics </option>
+        </select>
+        <button>Add Expense</button>
+        <br>
+    </form>
+    <div id="message">
+
+    </div>
+    <button id="rzp-button1">Buy Premium</button>
+    <button onclick="download()" id="downloadexpense">Download File</button>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <ul id="listOfExpenses"></ul>
+    <ul id="leaderboard"></ul>
+    <div id="pagination">
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+
+    <script src="./expense.js"></script>
+
+</body>
+
+</html>
